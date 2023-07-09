@@ -16,10 +16,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.blue,
         title: const Text(
           'Shop It Grocery App',
-           style: TextStyle(color: CupertinoColors.white),
-           ),
-        centerTitle: true,
+          style: TextStyle(color: CupertinoColors.white),
         ),
+        centerTitle: true,
+      ),
     );
   }
 }

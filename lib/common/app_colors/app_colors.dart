@@ -8,4 +8,6 @@ class AppColors{
   static Color kWhiteText = const Color(0xFFfdfffc);
   static Color kItemContainerColor = const Color(0xFFe9ecef);
   static Color kContainerColorGrey = const Color(0xFFadb5bd);
+  static Color kRed = const Color(0Xffe71d36);
+  static Color kGrey = const Color(0xFFdee2e6);
 }

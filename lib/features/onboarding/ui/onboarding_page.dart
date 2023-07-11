@@ -1,10 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shop_it_grocery_app/features/login/ui/login_page.dart';
+import 'package:shop_it_grocery_app/features/number_login/ui/phone_login_page.dart';
 import 'package:shop_it_grocery_app/features/onboarding/widgets/page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../common/app_colors/app_colors.dart';
@@ -45,7 +43,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (BuildContext context) => const LoginPage())
+                            MaterialPageRoute(builder: (BuildContext context) => const NumberLoginPage())
                           );
                         }, //Navigate to home page
                         child: Text(
@@ -66,7 +64,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   },
                   controller: pageController,
                   children: const [
-                    InkWell(),
                     PageWidget(
                         imagePath: 'assets/onboarding/shop.png',
                         text: 'Number Leading Online Store',
@@ -79,10 +76,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         imagePath: 'assets/onboarding/payment.png',
                         text: 'Enjoy Hassle Free Payment',
                         subText: 'Say goodbye to slow payment processes. Enjoy smooth payment process with our new payment partner that offers swipe payment without extra charges.'),
-                    PageWidget(
-                        imagePath: 'assets/onboarding/cashback.png',
-                        text: 'Earn Bonus On Goods Bought',
-                        subText: 'Discover a wide range of products at jaw-dropping discounts. Get ready to save big and shop smarter. Step into the world of Cheap Buy!'),
                   ],
                 ),
                 Align(
@@ -95,14 +88,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       children: [
                         SmoothPageIndicator(
                           controller: pageController,
-                          count: 4,
+                          count: 3,
                           effect: ExpandingDotsEffect(
                               dotColor: AppColors.kWhiteText,
                               activeDotColor: AppColors.kPrimaryColor,
                               radius: 5,
                               dotHeight: 5.h,
                               dotWidth: 6.w,
-                              spacing: 3),
+                              spacing: 3    
+                          ),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -115,7 +109,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               color: AppColors.kWhiteText,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(20)),
-                              //shape: BoxShape.circle
                             ),
                             child: Icon(
                               Icons.chevron_right,

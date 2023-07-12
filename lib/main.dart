@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_it_grocery_app/features/home/ui/home_page.dart';
 import 'package:shop_it_grocery_app/features/onboarding/bloc/onboarding_bloc.dart';
+import 'features/home/ui/home_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -60,6 +60,7 @@ class _NumberLoginPageState extends State<NumberLoginPage> {
                 controller: phone,
                 style: appStyle(18, FontWeight.w500, AppColors.kWhiteText, null),
                 border: Border.all(color: AppColors.kPrimaryColor),
+                obscureText: false,
                 prefixIcon: Container(
                   padding: EdgeInsets.all(14.w),
                   child: GestureDetector(

@@ -20,6 +20,8 @@ class CustomTextField extends StatelessWidget {
   final bool? showCursor;
   final Color? cursorColor;
   final BoxBorder? border;
+  final bool obscureText;
+  final void Function()? onTap;
   const CustomTextField({
     Key? key,
     this.controller,
@@ -38,6 +40,8 @@ class CustomTextField extends StatelessWidget {
     this.border,
     required this.width,
     required this.height,
+    required this.obscureText,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -52,11 +56,14 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         onChanged: onChanged,
+        onTap: onTap,
         initialValue: initialValue,
         keyboardType: keyboardType,
         style: style,
+        obscureText: obscureText,
         showCursor: showCursor,
         cursorColor: cursorColor,
+        autocorrect: false,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: hintStyle,

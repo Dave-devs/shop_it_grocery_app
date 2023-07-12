@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
+import 'package:shop_it_grocery_app/common/utils/app_size.dart';
+import 'package:shop_it_grocery_app/common/utils/app_spacer.dart';
 import 'package:shop_it_grocery_app/common/widgets/reusable_text.dart';
+import 'package:shop_it_grocery_app/features/home/widgets/product_tile_widget2.dart';
+import 'package:shop_it_grocery_app/features/search/ui/search_page.dart';
 import '../../../common/widgets/custom_textfield.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -22,47 +26,62 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: AppColors.kPrimaryColor,
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: EdgeInsets.all(2.w),
+          padding: EdgeInsets.all(0.w),
           child: CustomTextField(
-            width: 240.w,
-            height: 40.h,
+            width: 270.w,
+            height: 35.h,
             controller: search,
-            onChanged: (value) {
-              //Implement a search function here
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchPage())
+              );
             },
             keyboardType: TextInputType.text,
-            style: appStyle(18, FontWeight.w500, AppColors.kBlackText, null),
+            style: TextStyle(
+              fontSize: 18.sp,//18, FontWeight.w500, AppColors.kGrey,
+              fontWeight: FontWeight.normal,
+              color: AppColors.kGrey,
+              overflow: TextOverflow.fade
+            ),
             hintText: 'Search...',
             hintStyle: appStyle(14, FontWeight.w500, AppColors.kGrey, null),
             prefixIcon: Icon(Icons.search, color: AppColors.kGrey,),
             showCursor: true,
             cursorColor: AppColors.kGrey,
             border: Border.all(color: AppColors.kItemContainerColor),
+            obscureText: false,
           ),
         ),
+        centerTitle: false,
         actions: [
-          // badges.Badge(
-          //   position: badges.BadgePosition.topEnd(),
-          //   showBadge: true,
-          //   ignorePointer: false,
-          //   onTap: () {},
-          //   badgeContent: Icon(
-          //     Icons.person_outline_rounded,
-          //     color: AppColors.kWhiteText,
-          //   ),
-          //   badgeAnimation: const badges.BadgeAnimation.fade(
-          //       animationDuration: Duration(microseconds: 400)),
-          //   badgeStyle: badges.BadgeStyle(
-          //     shape: badges.BadgeShape.square,
-          //     badgeColor: AppColors.kRed,
-          //     padding: EdgeInsets.all(5.w),
-          //     borderRadius: BorderRadius.circular(4),
-          //     elevation: 0,
-          //   ),
-          //   child: const ReusableText(text: '0'),
-          // ),
-          IconButton(onPressed: () { }, icon: Icon(Icons.message_outlined, color: AppColors.kGrey, size: 18,)),
-          IconButton(onPressed: () {},  icon: Icon(Icons.person_outline_rounded, color: AppColors.kGrey, size: 18,)),
+          Padding(
+            padding: EdgeInsets.only(right: 20.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                badges.Badge(
+                  onTap: () { },
+                  position: badges.BadgePosition.topEnd(end: -2),
+                  showBadge: true,
+                  badgeContent: ReusableText(text: "0", style: appStyle(14, FontWeight.w400, AppColors.kWhiteText, null),),
+                  badgeStyle: badges.BadgeStyle(badgeColor: AppColors.kRed,),
+                  badgeAnimation: const badges.BadgeAnimation.fade(animationDuration: Duration(microseconds: 400)),
+                  child: IconButton(onPressed: () { }, icon: Icon(Icons.favorite_outline_rounded, color: AppColors.kGrey, size: 18,)),
+                ),
+                badges.Badge(
+                  onTap: () { },
+                  position: badges.BadgePosition.topEnd(end: -2),
+                  showBadge: true,
+                  badgeContent: ReusableText(text: "0", style: appStyle(14, FontWeight.w400, AppColors.kWhiteText, null),),
+                  badgeStyle: badges.BadgeStyle(badgeColor: AppColors.kRed,),
+                  badgeAnimation: const badges.BadgeAnimation.fade(animationDuration: Duration(microseconds: 400)),
+                  child: IconButton(onPressed: () { }, icon: Icon(Icons.shopping_cart_outlined, color: AppColors.kGrey, size: 18,)),
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );

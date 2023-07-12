@@ -23,6 +23,6 @@ TextStyle appStyle(double fontSize,FontWeight fontWeight, Color color, double? l
     fontSize: fontSize.sp,
     fontWeight: fontWeight,
     color: color,
-    letterSpacing: letterSpacing
+    letterSpacing: letterSpacing,
   );
 }

@@ -1,6 +1,7 @@
 part of 'bottom_nav_bloc.dart';
 
-@immutable
-abstract class BottomNavState {}
+class BottomNavState {
+  int pageIndex;
 
-class BottomNavInitial extends BottomNavState {}
+  BottomNavState({this.pageIndex = 0});
+}

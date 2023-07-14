@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_it_grocery_app/features/bottom_nav_bar/bloc/bottom_nav_bloc.dart';
 import 'package:shop_it_grocery_app/features/onboarding/bloc/onboarding_bloc.dart';
-import 'features/home/ui/home_page.dart';
+import 'features/bottom_nav_bar/ui/bottom_nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (BuildContext context) => OnboardingBloc())
+        BlocProvider(create: (BuildContext context) => OnboardingBloc()),
+        BlocProvider(create: (BuildContext context) => BottomNavBloc()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 825),
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const HomePage(),
+          home: const BottomNavBarPage(),
         ),
       ),
     );

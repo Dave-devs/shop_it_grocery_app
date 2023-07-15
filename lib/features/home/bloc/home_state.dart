@@ -4,18 +4,18 @@ part of 'home_bloc.dart';
 @immutable
 abstract class HomeState {}
 
-class HomeActionState extends HomeState{}
+class HomeActionState extends HomeState {}
 
 class HomeInitial extends HomeState {}
 
 //Build States
-class HomeLoadingState extends HomeState{}
+class HomeLoadingState extends HomeState {}
 class HomeSuccessState extends HomeState {
   final List<GroceryDataModel> groceryData;
   final List<EletronicDataModel> eletronicData;
   final List<FashionDataModel> fashionData;
   final List<FurnitureDataModel> furnitureData;
-  final List<MenAccessoryData> menDataAccessory;
+  final List<MenAccessoryDataModel> menDataAccessory;
   final List<WomenAccessoryDataModel> womenDataAccessory;
 
   HomeSuccessState({
@@ -26,32 +26,27 @@ class HomeSuccessState extends HomeState {
     required this.menDataAccessory,
     required this.womenDataAccessory,
   });
-  
+}
+class HomeErrorState extends HomeState {}
 
-  HomeSuccessState copyWith({
-    List<GroceryDataModel>? groceryData,
-    List<EletronicDataModel>? eletronicData,
-    List<FashionDataModel>? fashionData,
-    List<FurnitureDataModel>? furnitureData,
-    List<MenAccessoryData>? menDataAccessory,
-    List<WomenAccessoryDataModel>? womenDataAccessory,
-  }) {
-    return HomeSuccessState(
-      groceryData: groceryData ?? this.groceryData,
-      eletronicData: eletronicData ?? this.eletronicData,
-      fashionData: fashionData ?? this.fashionData,
-      furnitureData: furnitureData ?? this.furnitureData,
-      menDataAccessory: menDataAccessory ?? this.menDataAccessory,
-      womenDataAccessory: womenDataAccessory ?? this.womenDataAccessory,
-    );
-  }
+class HomeFavoriteIconCountState extends HomeState {
+  final int favoriteCountClick;
+  HomeFavoriteIconCountState({
+    this.favoriteCountClick = 0,
+  });
+
+}
+class HomeCartIconCountState extends HomeState {
+  final int cartCountClick;
+  HomeCartIconCountState({
+    this.cartCountClick = 0,
+  });
 }
 
-class HomeErrorState extends HomeState{}
-
-class HomePersonIconCountState extends HomeState{}
-class HomeCartIconCountState extends HomeState{}
 
 //Action States
-class HomeNavigateToCartPageClickState extends HomeActionState{}
-class HomeNavigateToAccountPageClickState extends HomeActionState{}
+class SearchBarNavigateClickState extends HomeActionState {}
+class OnHomeFavoriteNavigateClickState extends HomeActionState {}
+class OnHomeCartNavigateClickState extends HomeActionState {}
+class ProductTileFavoriteIconClickState extends HomeActionState {}
+class ProductTileCartIconClickState extends HomeActionState {}

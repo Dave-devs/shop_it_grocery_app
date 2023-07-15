@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../common/app_colors/app_colors.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -10,6 +11,11 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.kPrimaryColor,
+      ),
+      backgroundColor: AppColors.kBackgroundColor,
+    );
   }
 }

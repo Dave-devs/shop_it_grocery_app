@@ -35,44 +35,50 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
           child: Scaffold(
             backgroundColor: AppColors.kBackgroundColor,
             body: pageLists[state.pageIndex],
-            bottomNavigationBar: BottomNavigationBar(
-                onTap: (index) {
-                  setState(() {
-                    state.pageIndex = index;
-                  });
-                },
-                currentIndex: state.pageIndex,
-                elevation: 0,
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: AppColors.kPrimaryColor,
-                unselectedItemColor: AppColors.kItemContainerColor,
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                items: const [
-                  BottomNavigationBarItem(
-                      icon: Icon(Ionicons.ios_home_outline),
-                      activeIcon: Icon(Ionicons.ios_home),
-                      label: 'Home'),
-                  BottomNavigationBarItem(
-                      icon: Icon(Ionicons.cart_outline),
-                      activeIcon: Icon(Ionicons.cart),
-                      label: 'Cart'),
-                  BottomNavigationBarItem(
-                      icon: Icon(Icons.favorite_outline),
-                      activeIcon: Icon(Icons.favorite_outline),
-                      label: 'Favorite'),
-                  BottomNavigationBarItem(
-                      icon: Icon(Ionicons.person_outline),
-                      activeIcon: Icon(Ionicons.person),
-                      label: 'Account'),
-                  BottomNavigationBarItem(
-                      icon: Icon(Ionicons.settings_outline),
-                      activeIcon: Icon(Ionicons.settings),
-                      label: 'Settings'),
-                ]),
-          ),
-        );
-      },
-    );
-  }
+            bottomNavigationBar: Theme(
+              data: ThemeData(canvasColor: AppColors.kBackgroundColor),
+              child: BottomNavigationBar(
+                  onTap: (index) {
+                    setState(() {
+                      state.pageIndex = index;
+                      context.read<BottomNavBloc>().add(BottomNavigatorEvent(index));
+                    });
+                  },
+                  currentIndex: state.pageIndex,
+                  elevation: 0,
+                  type: BottomNavigationBarType.fixed,
+                  selectedItemColor: AppColors.kPrimaryColor,
+                  unselectedItemColor: AppColors.kItemContainerColor,
+                  showSelectedLabels: false,
+                  showUnselectedLabels: false,
+                  items: const [
+                    BottomNavigationBarItem(
+                        icon: Icon(Ionicons.ios_home_outline),
+                        activeIcon: Icon(Ionicons.ios_home),
+                        label: 'Home'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Ionicons.cart_outline),
+                        activeIcon: Icon(Ionicons.cart),
+                        label: 'Cart'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.favorite_outline),
+                        activeIcon: Icon(Icons.favorite),
+                        label: 'Favorite'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Ionicons.person_outline),
+                        activeIcon: Icon(Ionicons.person),
+                        label: 'Account'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Ionicons.settings_outline),
+                        activeIcon: Icon(Ionicons.settings),
+                        label: 'Settings'
+                    ),
+                  ]
+                ),
+            ),
+            ),
+          );
+        },
+      );
+    }
 }

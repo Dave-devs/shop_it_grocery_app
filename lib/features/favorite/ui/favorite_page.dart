@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../common/app_colors/app_colors.dart';
+
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
 
@@ -10,6 +12,11 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.kPrimaryColor,
+      ),
+      backgroundColor: AppColors.kBackgroundColor,
+    );
   }
 }

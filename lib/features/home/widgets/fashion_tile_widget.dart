@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
 import 'package:shop_it_grocery_app/common/utils/app_size.dart';
 import 'package:shop_it_grocery_app/common/widgets/reusable_text.dart';
+import '../../../common/utils/app_spacer.dart';
 import '../../../model/fashion_data_model.dart';
 import '../bloc/home_bloc.dart';
 
@@ -19,108 +20,87 @@ class FashionTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.kBackgroundColor,
-      body: Container(
-        width: 160.w,
-        height: 200.h,
-        constraints: BoxConstraints.loose(Size(160.w, 210.h)),
+    return Container(
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.kRadius)),
-            border: Border.all(color: AppColors.kPrimaryAccentColor)),
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Stack(
-                children: [
-                  Container(
-                    width: 160.w,
-                    height: 110.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(AppSize.kRadius),
-                            topRight: Radius.circular(AppSize.kRadius)),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(fashionDataModel.imageUrl))),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                        onPressed: () {
-                          homeBloc.add(OnProductFavoriteItemClickEvent(fashionClickedProduct: fashionDataModel));
-                        },
-                        icon: Icon(Icons.favorite_outline,
-                            size: 20, color: AppColors.kPrimaryColor)),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                width: 160.w,
-                height: 90.h,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(AppSize.kRadius),
-                        bottomRight: Radius.circular(AppSize.kRadius))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: ReusableText(
-                        text: fashionDataModel.name,
-                        style: appStyle(
-                            12, FontWeight.w600, AppColors.kBlackText, null),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        fashionDataModel.description,
-                        maxLines: 2,
-                        softWrap: true,
-                        overflow: TextOverflow.ellipsis,
-                        style: appStyle(
-                            10, FontWeight.normal, AppColors.kBlackText, null),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: ReusableText(
-                            text: "\$${fashionDataModel.price}",
-                            style: appStyle(16, FontWeight.w500,
-                                AppColors.kBlackText, null),
-                          ),
-                        ),
-                        IconButton(
-                            onPressed: () {
-                              homeBloc.add(OnProductCartItemClickEvent(
-                                  fashionClickedProduct: fashionDataModel));
-                            },
-                            icon: Icon(
-                              Icons.shopping_cart_outlined,
-                              size: 20,
-                              color: AppColors.kPrimaryColor,
-                            ))
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            )
-          ],
+          border: Border.all(color: Colors.grey),
+          borderRadius: const BorderRadius.all(Radius.circular(6)),
         ),
-      ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Stack(
+            children: [
+              Container(
+                  height: 100.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(6.0),
+                          topRight: Radius.circular(6.0)),
+                      image: DecorationImage(
+                          image: NetworkImage(fashionDataModel.imageUrl),
+                          fit: BoxFit.cover))),
+              Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                    onPressed: () =>
+                        homeBloc.add(OnHomeFavoriteIconNavClickEvent()),
+                    icon: Icon(
+                      Icons.favorite_outline,
+                      size: 20,
+                      color: AppColors.kPrimaryColor,
+                    )),
+              ),
+              Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                      onPressed: () => OnHomeCartIconNavClickEvent(),
+                      icon: Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 20,
+                        color: AppColors.kPrimaryColor,
+                      ))),
+            ],
+          ),
+          // const HeightSpacer(height: 12),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 5),
+            child: Text(
+              fashionDataModel.name,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: appStyle(12, FontWeight.bold, AppColors.kBlackText, null),
+            ),
+          ),
+
+          // const HeightSpacer(height: 8),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 5),
+            child: Text(
+              fashionDataModel.description,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              softWrap: true,
+              style:
+                  appStyle(10, FontWeight.normal, AppColors.kBlackText, null),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 5,
+            ),
+            child: Text(
+              "\$${fashionDataModel.price}",
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              softWrap: true,
+              style:
+                  appStyle(12, FontWeight.w500, AppColors.kPrimaryColor, null),
+            ),
+          ),
+        ]
+      )
     );
   }
 }

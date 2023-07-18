@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
           final successState = state as HomeSuccessState;
             return Scaffold(
               //Success State Widget
-              backgroundColor: AppColors.kBackgroundColor,
+              backgroundColor: Colors.white,
               appBar: AppBar(
                 backgroundColor: AppColors.kPrimaryColor,
                 automaticallyImplyLeading: false,
@@ -217,23 +217,11 @@ class _HomePageState extends State<HomePage> {
                           width: 280,
                           height: 110,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(6.w))
-                          ),
-                          child: Image.asset(
-                            "assets/images/advert1.jpg",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const WidthSpacer(width: 10),
-                        Container(
-                          width: 280,
-                          height: 110,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(6.w))
-                          ),
-                          child: Image.asset(
-                            "assets/images/advert2.jpg",
-                            fit: BoxFit.cover,
+                              borderRadius: BorderRadius.all(Radius.circular(6.w)),
+                              image: const DecorationImage(
+                                image: AssetImage("assets/images/advert1.jpg"),
+                                fit: BoxFit.cover
+                              )
                           ),
                         ),
                         const WidthSpacer(width: 10),
@@ -241,121 +229,157 @@ class _HomePageState extends State<HomePage> {
                           width: 280,
                           height: 110,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(6.w))
+                              borderRadius: BorderRadius.all(Radius.circular(6.w)),
+                              image: const DecorationImage(
+                                image: AssetImage("assets/images/advert2.jpg"),
+                                fit: BoxFit.cover
+                              )
                           ),
-                          child: Image.asset(
-                            "assets/images/advert3.jpg",
-                            fit: BoxFit.cover,
+                        ),
+                        const WidthSpacer(width: 10),
+                        Container(
+                          width: 280,
+                          height: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(6.w)),
+                              image: const DecorationImage(
+                                image: AssetImage("assets/images/advert3.jpg"),
+                                fit: BoxFit.cover
+                              )
                           ),
                         ),
                       ],
                     ),
                   ),
 
-                
+                  const HeightSpacer(height: 5),
 
                   GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( //First Grid View for Eletronics
                       crossAxisCount: 2,
                       childAspectRatio: 1,
+                      // mainAxisSpacing: 10,
                     ),
                     itemCount: successState.eletronicData.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return EletronicTileWidget(
-                        homeBloc: homeBloc, 
-                        eletronicDataModel: successState.eletronicData[index]
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: EletronicTileWidget(
+                          homeBloc: homeBloc, 
+                          eletronicDataModel: successState.eletronicData[index]
+                        ),
                       );
                     }
                   ),
-                  
-                  const HeightSpacer(height: 10),
+
+                  // const HeightSpacer(height: 20),
 
                   GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( //Second Grid View for Fashion
                       crossAxisCount: 2,
-                      childAspectRatio: 1
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 10
                     ),
                     itemCount: successState.fashionData.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return FashionTileWidget(
-                        homeBloc: homeBloc,
-                        fashionDataModel: successState.fashionData[index]
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: FashionTileWidget(
+                          homeBloc: homeBloc,
+                          fashionDataModel: successState.fashionData[index]
+                        ),
                       );
                     }
                   ),
 
-                  const HeightSpacer(height: 10),
+                  const HeightSpacer(height: 20),
 
                   GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Third Grid View for Furniture
                       crossAxisCount: 2,
-                      childAspectRatio: 1
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 10
                     ),
                     itemCount: successState.furnitureData.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return FurnitureTileWidget(
-                        homeBloc: homeBloc,
-                        furnitureDataModel: successState.furnitureData[index]
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: FurnitureTileWidget(
+                          homeBloc: homeBloc,
+                          furnitureDataModel: successState.furnitureData[index]
+                        ),
                       );
                     }
                   ),
 
-                  const HeightSpacer(height: 10),
+                  const HeightSpacer(height: 20),
 
                   GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Forth Grid View for Grocery
                       crossAxisCount: 2,
-                      childAspectRatio: 1
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 10
                     ),
                     itemCount: successState.groceryData.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return GroceryTileWidget(
-                        homeBloc: homeBloc,
-                        groceryDataModel: successState.groceryData[index]
+                      return Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: GroceryTileWidget(
+                          homeBloc: homeBloc,
+                          groceryDataModel: successState.groceryData[index]
+                        ),
                       );
                     }
                   ),
 
-                  const HeightSpacer(height: 10),
+                  const HeightSpacer(height: 20),
 
                   GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Fifth Grid View for Men Accessory
                       crossAxisCount: 2,
-                      childAspectRatio: 1
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 10
                     ),
                     itemCount: successState.menDataAccessory.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return MenTileWidget(
-                        homeBloc: homeBloc,
-                        menAccessoryDataModel: successState.menDataAccessory[index]
+                      return Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: MenTileWidget(
+                          homeBloc: homeBloc,
+                          menAccessoryDataModel: successState.menDataAccessory[index]
+                        ),
                       );
                     }
                   ),
 
-                   const HeightSpacer(height: 10),
+                   const HeightSpacer(height: 20),
 
                    GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Sixth Grid View for Women Accessory
                       crossAxisCount: 2,
-                      childAspectRatio: 1
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 10
                     ),
                     itemCount: successState.womenDataAccessory.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return WomenTileWidget(
-                        homeBloc: homeBloc,
-                        womenAccessoryDataModel: successState.womenDataAccessory[index]
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: WomenTileWidget(
+                          homeBloc: homeBloc,
+                          womenAccessoryDataModel: successState.womenDataAccessory[index]
+                        ),
                       );
                     }
                   ),

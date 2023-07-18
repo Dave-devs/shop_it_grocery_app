@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/features/bottom_nav_bar/bloc/bottom_nav_bloc.dart';
+import 'package:shop_it_grocery_app/features/bottom_nav_bar/ui/bottom_nav_bar.dart';
 import 'package:shop_it_grocery_app/features/onboarding/bloc/onboarding_bloc.dart';
-import 'features/bottom_nav_bar/ui/bottom_nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (BuildContext context) => OnboardingBloc()),
         BlocProvider(create: (BuildContext context) => BottomNavBloc()),
+        // BlocProvider(create: (BuildContext (context) => HomeBloc())),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 825),
         minTextAdapt: true,
-        builder: (context, child) =>
-        MaterialApp(
+        builder: (context, child) => MaterialApp(
           title: 'Davedevs',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(

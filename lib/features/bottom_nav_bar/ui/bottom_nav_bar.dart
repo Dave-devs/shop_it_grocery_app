@@ -19,7 +19,6 @@ class BottomNavBarPage extends StatefulWidget {
 }
 
 class _BottomNavBarPageState extends State<BottomNavBarPage> {
-  //int pageIndex = 0;
   List<Widget> pageLists = [
     const HomePage(),
     const CartPage(),
@@ -36,7 +35,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
             backgroundColor: AppColors.kBackgroundColor,
             body: pageLists[state.pageIndex],
             bottomNavigationBar: Theme(
-              data: ThemeData(canvasColor: AppColors.kBackgroundColor),
+              data: ThemeData(canvasColor: AppColors.kBlackText),
               child: BottomNavigationBar(
                   onTap: (index) {
                     setState(() {
@@ -53,24 +52,24 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
                   showUnselectedLabels: false,
                   items: const [
                     BottomNavigationBarItem(
-                        icon: Icon(Ionicons.ios_home_outline),
-                        activeIcon: Icon(Ionicons.ios_home),
+                        icon: Icon(Icons.home_outlined),
+                        activeIcon: Icon(Icons.home),
                         label: 'Home'),
                     BottomNavigationBarItem(
-                        icon: Icon(Ionicons.cart_outline),
-                        activeIcon: Icon(Ionicons.cart),
+                        icon: Icon(Icons.shopping_cart_outlined),
+                        activeIcon: Icon(Icons.shopping_cart),
                         label: 'Cart'),
                     BottomNavigationBarItem(
                         icon: Icon(Icons.favorite_outline),
                         activeIcon: Icon(Icons.favorite),
                         label: 'Favorite'),
                     BottomNavigationBarItem(
-                        icon: Icon(Ionicons.person_outline),
-                        activeIcon: Icon(Ionicons.person),
+                        icon: Icon(Icons.person_outlined),
+                        activeIcon: Icon(Icons.person),
                         label: 'Account'),
                     BottomNavigationBarItem(
-                        icon: Icon(Ionicons.settings_outline),
-                        activeIcon: Icon(Ionicons.settings),
+                        icon: Icon(Icons.settings_outlined),
+                        activeIcon: Icon(Icons.settings),
                         label: 'Settings'
                     ),
                   ]

@@ -22,101 +22,105 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
-    
     on<HomeInitialEvent>(homeInitialEvent);
     on<OnHomeSearchIconClickEvent>(onHomeSearchIconClickEvent);
-    on<OnHomeFavoriteIconNavClick>(onHomeFavoriteIconNavClick);
-    on<OnHomeCartIconNavClick>(onHomeCartIconNavClick);
-    on<OnProductCartItemClick>(onProductCartItemClick);
-    on<OnProductFavoriteItemClick>(onProductFavoriteItemClick);
+    on<OnHomeFavoriteIconNavClickEvent>(onHomeFavoriteIconNavClick);
+    on<OnHomeCartIconNavClickEvent>(onHomeCartIconNavClick);
+    on<OnProductCartItemClickEvent>(onProductCartItemClick);
+    on<OnProductFavoriteItemClickEvent>(onProductFavoriteItemClick);
   }
 
-
-  FutureOr<void> homeInitialEvent(HomeInitialEvent event, Emitter<HomeState> emit) async {
-    try{
-      emit(HomeLoadingState());
-      await Future.delayed(const Duration(seconds: 3));
-      emit(HomeSuccessState(
-        groceryData: GroceryData.groceryData.map((e) => GroceryDataModel(
-          id: e['id'],
-          name: e['name'], 
-          description: e['description'], 
-          price: e['price'], 
-          imageUrl: e['imageUrl']
-          )).toList(),
-        eletronicData: EletronicsData.eletronicsData.map((e) => EletronicDataModel(
-          id: e['id'], 
-          name: e['name'], 
-          description: e['description'],
-          price: e['price'], 
-          imageUrl: e['imageUrl']
-          )).toList(),
-        fashionData: FashionData.fashionData.map((e) => FashionDataModel(
-          id: e['id'], 
-          name: e['name'], 
-          description: e['description'], 
-          price: e['price'], 
-          imageUrl: e['imageUrl']
-          )).toList(),
-        furnitureData: FurnitureData.furnitureData.map((e) => FurnitureDataModel(
-          id: e['id'], 
-          name: e['name'], 
-          description: e['description'],
-          price: e['price'], 
-          imageUrl: e['imageUrl']
-          )).toList(),
-        menDataAccessory: MenAccessoryData.menAccessoryData.map((e) => MenAccessoryDataModel(
-          id: e['id'], 
-          name: e['name'], 
-          description: e['description'], 
-          price: e['price'], 
-          imageUrl: e['imageUrl']
-          )).toList(),
-        womenDataAccessory: WomenAccessoryData.womenAccessoryData.map((e) => WomenAccessoryDataModel(
-          id: e['id'], 
-          name: e['name'], 
-          description: e['description'], 
-          price: e['price'], 
-          imageUrl: e['imageUrl']
-          )).toList()
-      ));
-      
-    } on Exception catch (e) {
-      if (kDebugMode) {
-        print('Exception occurred: $e');
-      }
-    }
+  FutureOr<void> homeInitialEvent(
+      HomeInitialEvent event, Emitter<HomeState> emit) async {
+    emit(HomeLoadingState());
+    await Future.delayed(const Duration(seconds: 3));
+    emit(HomeSuccessState(
+        groceryData: GroceryData.groceryData
+            .map((e) => GroceryDataModel(
+                id: e['id'],
+                name: e['name'],
+                description: e['description'],
+                price: e['price'],
+                imageUrl: e['imageUrl']))
+            .toList(),
+        eletronicData: EletronicsData.eletronicsData
+            .map((e) => EletronicDataModel(
+                id: e['id'],
+                name: e['name'],
+                description: e['description'],
+                price: e['price'],
+                imageUrl: e['imageUrl']))
+            .toList(),
+        fashionData: FashionData.fashionData
+            .map((e) => FashionDataModel(
+                id: e['id'],
+                name: e['name'],
+                description: e['description'],
+                price: e['price'],
+                imageUrl: e['imageUrl']))
+            .toList(),
+        furnitureData: FurnitureData.furnitureData
+            .map((e) => FurnitureDataModel(
+                id: e['id'],
+                name: e['name'],
+                description: e['description'],
+                price: e['price'],
+                imageUrl: e['imageUrl']))
+            .toList(),
+        menDataAccessory: MenAccessoryData.menAccessoryData
+            .map((e) => MenAccessoryDataModel(
+                id: e['id'],
+                name: e['name'],
+                description: e['description'],
+                price: e['price'],
+                imageUrl: e['imageUrl']))
+            .toList(),
+        womenDataAccessory: WomenAccessoryData.womenAccessoryData
+            .map((e) => WomenAccessoryDataModel(
+                id: e['id'],
+                name: e['name'],
+                description: e['description'],
+                price: e['price'],
+                imageUrl: e['imageUrl']))
+            .toList()));
   }
 
-  FutureOr<void> onHomeSearchIconClickEvent(OnHomeSearchIconClickEvent event, Emitter<HomeState> emit) {
+  FutureOr<void> onHomeSearchIconClickEvent(
+      OnHomeSearchIconClickEvent event, Emitter<HomeState> emit) {
     emit(SearchBarNavigateClickState());
   }
 
-  FutureOr<void> onHomeFavoriteIconNavClick(OnHomeFavoriteIconNavClick event, Emitter<HomeState> emit) {
+  FutureOr<void> onHomeFavoriteIconNavClick(
+      OnHomeFavoriteIconNavClickEvent event, Emitter<HomeState> emit) {
     emit(OnHomeFavoriteNavigateClickState());
   }
 
-  FutureOr<void> onHomeCartIconNavClick(OnHomeCartIconNavClick event, Emitter<HomeState> emit) {
+  FutureOr<void> onHomeCartIconNavClick(
+      OnHomeCartIconNavClickEvent event, Emitter<HomeState> emit) {
     emit(OnHomeCartNavigateClickState());
   }
 
-  FutureOr<void> onProductCartItemClick(OnProductCartItemClick event, Emitter<HomeState> emit) {
-    cartGroceryItems.add(event.groceryClickedProduct);
-    cartEletronicsItems.add(event.eletronicClickedProduct);
-    cartFashionItems.add(event.fashionClickedProduct);
-    cartFurnitureItems.add(event.furnitureClickedProduct);
-    cartMenItems.add(event.menClickedProduct);
-    cartWomenItems.add(event.womenClickedProduct);
+  FutureOr<void> onProductCartItemClick(
+      OnProductCartItemClickEvent event, Emitter<HomeState> emit) {
+    cartGroceryItems.add(event.groceryClickedProduct!);
+    cartEletronicsItems.add(event.eletronicClickedProduct!);
+    cartFashionItems.add(event.fashionClickedProduct!);
+    cartFurnitureItems.add(event.furnitureClickedProduct!);
+    cartMenItems.add(event.menClickedProduct!);
+    cartWomenItems.add(event.womenClickedProduct!);
     emit(ProductTileCartIconClickState());
+    emit(ProductTileCartIconClickState(cartCount: event.count++));
   }
 
-  FutureOr<void> onProductFavoriteItemClick(OnProductFavoriteItemClick event, Emitter<HomeState> emit) {
-    favoriteGroceryItems.add(event.groceryClickedProduct);
-    favoriteEletronicsItems.add(event.eletronicClickedProduct);
-    favoriteFashionItems.add(event.fashionClickedProduct);
-    favoriteFurnitureItems.add(event.furnitureClickedProduct);
-    favoriteMenItems.add(event.menClickedProduct);
-    favoriteWomenItems.add(event.womenClickedProduct);
+  FutureOr<void> onProductFavoriteItemClick(
+      OnProductFavoriteItemClickEvent event, Emitter<HomeState> emit) {
+    favoriteGroceryItems.add(event.groceryClickedProduct!);
+    favoriteEletronicsItems.add(event.eletronicClickedProduct!);
+    favoriteFashionItems.add(event.fashionClickedProduct!);
+    favoriteFurnitureItems.add(event.furnitureClickedProduct!);
+    favoriteMenItems.add(event.menClickedProduct!);
+    favoriteWomenItems.add(event.womenClickedProduct!);
     emit(ProductTileFavoriteIconClickState());
+    emit(ProductTileFavoriteIconClickState(favoriteCount: event.count++));
   }
 }

@@ -6,62 +6,88 @@ abstract class HomeEvent {}
 
 class HomeInitialEvent extends HomeEvent {}
 
-class OnHomeSearchIconClickEvent extends HomeEvent{} //Event 1
+class OnHomeSearchIconClickEvent extends HomeEvent {} //Event 1
 
-class OnHomeFavoriteIconNavClick extends HomeEvent {} //Event 2
+class OnHomeFavoriteIconNavClickEvent extends HomeEvent {} //Event 2
 
-class OnHomeCartIconNavClick extends HomeEvent {}  //Event 3
+class OnHomeCartIconNavClickEvent extends HomeEvent {} //Event 3
 
-class OnProductCartItemClick extends HomeEvent{
-  final GroceryDataModel groceryClickedProduct;
-  final EletronicDataModel eletronicClickedProduct;
-  final FashionDataModel fashionClickedProduct;
-  final FurnitureDataModel furnitureClickedProduct;
-  final MenAccessoryDataModel menClickedProduct;
-  final WomenAccessoryDataModel womenClickedProduct;
-  
-  OnProductCartItemClick({
-    required this.groceryClickedProduct,
-    required this.eletronicClickedProduct,
-    required this.fashionClickedProduct,
-    required this.furnitureClickedProduct,
-    required this.menClickedProduct,
-    required this.womenClickedProduct,
+class OnProductCartItemClickEvent extends HomeEvent {
+  final GroceryDataModel? groceryClickedProduct;
+  final EletronicDataModel? eletronicClickedProduct;
+  final FashionDataModel? fashionClickedProduct;
+  final FurnitureDataModel? furnitureClickedProduct;
+  final MenAccessoryDataModel? menClickedProduct;
+  final WomenAccessoryDataModel? womenClickedProduct;
+  int count;
+
+  OnProductCartItemClickEvent({
+    this.groceryClickedProduct,
+    this.eletronicClickedProduct,
+    this.fashionClickedProduct,
+    this.furnitureClickedProduct,
+    this.menClickedProduct,
+    this.womenClickedProduct,
+    this.count = 0,
   });
+
+  // OnProductCartItemClickEvent copyWith({
+  //   GroceryDataModel? groceryClickedProduct,
+  //   EletronicDataModel? eletronicClickedProduct,
+  //   FashionDataModel? fashionClickedProduct,
+  //   FurnitureDataModel? furnitureClickedProduct,
+  //   MenAccessoryDataModel? menClickedProduct,
+  //   WomenAccessoryDataModel? womenClickedProduct,
+  //   int? count,
+  // }) {
+  //   return OnProductCartItemClickEvent(
+  //     groceryClickedProduct: groceryClickedProduct ?? this.groceryClickedProduct,
+  //     eletronicClickedProduct: eletronicClickedProduct ?? this.eletronicClickedProduct,
+  //     fashionClickedProduct: fashionClickedProduct ?? this.fashionClickedProduct,
+  //     furnitureClickedProduct: furnitureClickedProduct ?? this.furnitureClickedProduct,
+  //     menClickedProduct: menClickedProduct ?? this.menClickedProduct,
+  //     womenClickedProduct: womenClickedProduct ?? this.womenClickedProduct,
+  //     count: count ?? this.count,
+  //   );
+  // }
 } //Event 4
 
-class OnProductFavoriteItemClick extends HomeEvent {
-  final GroceryDataModel groceryClickedProduct;
-  final EletronicDataModel eletronicClickedProduct;
-  final FashionDataModel fashionClickedProduct;
-  final FurnitureDataModel furnitureClickedProduct;
-  final MenAccessoryDataModel menClickedProduct;
-  final WomenAccessoryDataModel womenClickedProduct;
+class OnProductFavoriteItemClickEvent extends HomeEvent {
+  final GroceryDataModel? groceryClickedProduct;
+  final EletronicDataModel? eletronicClickedProduct;
+  final FashionDataModel? fashionClickedProduct;
+  final FurnitureDataModel? furnitureClickedProduct;
+  final MenAccessoryDataModel? menClickedProduct;
+  final WomenAccessoryDataModel? womenClickedProduct;
+  int count;
 
-  OnProductFavoriteItemClick({
-    required this.groceryClickedProduct,
-    required this.eletronicClickedProduct,
-    required this.fashionClickedProduct,
-    required this.furnitureClickedProduct,
-    required this.menClickedProduct,
-    required this.womenClickedProduct,
+  OnProductFavoriteItemClickEvent({
+    this.groceryClickedProduct,
+    this.eletronicClickedProduct,
+    this.fashionClickedProduct,
+    this.furnitureClickedProduct,
+    this.menClickedProduct,
+    this.womenClickedProduct,
+    this.count = 0,
   });
-} //Event 5
 
-// class OnFavoriteAddItemIconClick extends HomeEvent {
-  // final GroceryDataModel groceryClickedProduct;
-  // final EletronicDataModel eletronicClickedProduct;
-  // final FashionDataModel fashionClickedProduct;
-  // final FurnitureDataModel furnitureClickedProduct;
-  // final MenAccessoryDataModel menClickedProduct;
-  // final WomenAccessoryDataModel womenClickedProduct;
-  
-  // OnFavoriteAddItemIconClick({
-  //   required this.groceryClickedProduct,
-  //   required this.eletronicClickedProduct,
-  //   required this.fashionClickedProduct,
-  //   required this.furnitureClickedProduct,
-  //   required this.menClickedProduct,
-  //   required this.womenClickedProduct,
-  // });
-// }
+  // OnProductFavoriteItemClickEvent copyWith({
+  //   GroceryDataModel? groceryClickedProduct,
+  //   EletronicDataModel? eletronicClickedProduct,
+  //   FashionDataModel? fashionClickedProduct,
+  //   FurnitureDataModel? furnitureClickedProduct,
+  //   MenAccessoryDataModel? menClickedProduct,
+  //   WomenAccessoryDataModel? womenClickedProduct,
+  //   int? count,
+  // }) {
+  //   return OnProductFavoriteItemClickEvent(
+  //     groceryClickedProduct: groceryClickedProduct ?? this.groceryClickedProduct,
+  //     eletronicClickedProduct: eletronicClickedProduct ?? this.eletronicClickedProduct,
+  //     fashionClickedProduct: fashionClickedProduct ?? this.fashionClickedProduct,
+  //     furnitureClickedProduct: furnitureClickedProduct ?? this.furnitureClickedProduct,
+  //     menClickedProduct: menClickedProduct ?? this.menClickedProduct,
+  //     womenClickedProduct: womenClickedProduct ?? this.womenClickedProduct,
+  //     count: count ?? this.count,
+  //   );
+  // }
+}

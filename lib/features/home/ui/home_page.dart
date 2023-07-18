@@ -5,10 +5,18 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
 import 'package:shop_it_grocery_app/common/widgets/reusable_text.dart';
+import 'package:shop_it_grocery_app/features/cart/ui/cart_page.dart';
 import 'package:shop_it_grocery_app/features/home/bloc/home_bloc.dart';
+import 'package:shop_it_grocery_app/features/home/widgets/eletronic_tile_widget.dart';
+import 'package:shop_it_grocery_app/features/home/widgets/fashion_tile_widget.dart';
+import 'package:shop_it_grocery_app/features/home/widgets/grocery_tile_widget.dart';
+import 'package:shop_it_grocery_app/features/home/widgets/men_tile_widget.dart';
+import 'package:shop_it_grocery_app/features/home/widgets/women_tile_widget.dart';
 import 'package:shop_it_grocery_app/features/search/ui/search_page.dart';
 import '../../../common/utils/app_spacer.dart';
 import '../../../common/widgets/custom_textfield.dart';
+import '../../favorite/ui/favorite_page.dart';
+import '../widgets/furniture_tile_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -35,8 +43,11 @@ class _HomePageState extends State<HomePage> {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is SearchBarNavigateClickState) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SearchPage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchPage()));
+        } else if(state is  OnHomeFavoriteNavigateClickState) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const FavoritePage()));
+        } else if(state is OnHomeCartNavigateClickState) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
         }
       },
       builder: (context, state) {
@@ -53,9 +64,7 @@ class _HomePageState extends State<HomePage> {
                     width: 270.w,
                     height: 35.h,
                     controller: search,
-                    onTap: () {
-                      homeBloc.add(OnHomeSearchIconClickEvent());
-                    },
+                    onTap: () { },
                     keyboardType: TextInputType.text,
                     style: TextStyle(
                         fontSize: 18.sp, //18, FontWeight.w500, AppColors.kGrey,
@@ -120,6 +129,7 @@ class _HomePageState extends State<HomePage> {
             
 
           case HomeSuccessState:
+          final successState = state as HomeSuccessState;
             return Scaffold(
               //Success State Widget
               backgroundColor: AppColors.kBackgroundColor,
@@ -165,7 +175,9 @@ class _HomePageState extends State<HomePage> {
                         Badge(
                           label: const Text("0"),
                           child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                homeBloc.add(OnHomeFavoriteIconNavClickEvent());
+                              },
                               alignment: Alignment.topRight,
                               icon: Icon(
                                 Icons.favorite_outline,
@@ -177,7 +189,9 @@ class _HomePageState extends State<HomePage> {
                           label: const Text("0"),
                           child: IconButton(
                               alignment: Alignment.topRight,
-                              onPressed: () {},
+                              onPressed: () {
+                                homeBloc.add(OnHomeCartIconNavClickEvent());
+                              },
                               icon: Icon(
                                 Ionicons.cart_outline,
                                 color: AppColors.kGrey,
@@ -240,13 +254,111 @@ class _HomePageState extends State<HomePage> {
 
                 
 
-                  ListView.builder(
-                      itemCount: 3,
-                      itemBuilder: (context, index) {
-                        return null;
-                      
-                        //return ProductTileWidget
-                      })
+                  GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( //First Grid View for Eletronics
+                      crossAxisCount: 2,
+                      childAspectRatio: 1,
+                    ),
+                    itemCount: successState.eletronicData.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return EletronicTileWidget(
+                        homeBloc: homeBloc, 
+                        eletronicDataModel: successState.eletronicData[index]
+                      );
+                    }
+                  ),
+                  
+                  const HeightSpacer(height: 10),
+
+                  GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( //Second Grid View for Fashion
+                      crossAxisCount: 2,
+                      childAspectRatio: 1
+                    ),
+                    itemCount: successState.fashionData.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return FashionTileWidget(
+                        homeBloc: homeBloc,
+                        fashionDataModel: successState.fashionData[index]
+                      );
+                    }
+                  ),
+
+                  const HeightSpacer(height: 10),
+
+                  GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Third Grid View for Furniture
+                      crossAxisCount: 2,
+                      childAspectRatio: 1
+                    ),
+                    itemCount: successState.furnitureData.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return FurnitureTileWidget(
+                        homeBloc: homeBloc,
+                        furnitureDataModel: successState.furnitureData[index]
+                      );
+                    }
+                  ),
+
+                  const HeightSpacer(height: 10),
+
+                  GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Forth Grid View for Grocery
+                      crossAxisCount: 2,
+                      childAspectRatio: 1
+                    ),
+                    itemCount: successState.groceryData.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return GroceryTileWidget(
+                        homeBloc: homeBloc,
+                        groceryDataModel: successState.groceryData[index]
+                      );
+                    }
+                  ),
+
+                  const HeightSpacer(height: 10),
+
+                  GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Fifth Grid View for Men Accessory
+                      crossAxisCount: 2,
+                      childAspectRatio: 1
+                    ),
+                    itemCount: successState.menDataAccessory.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return MenTileWidget(
+                        homeBloc: homeBloc,
+                        menAccessoryDataModel: successState.menDataAccessory[index]
+                      );
+                    }
+                  ),
+
+                   const HeightSpacer(height: 10),
+
+                   GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(  //Sixth Grid View for Women Accessory
+                      crossAxisCount: 2,
+                      childAspectRatio: 1
+                    ),
+                    itemCount: successState.womenDataAccessory.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return WomenTileWidget(
+                        homeBloc: homeBloc,
+                        womenAccessoryDataModel: successState.womenDataAccessory[index]
+                      );
+                    }
+                  ),
                 ],
               ),
             );

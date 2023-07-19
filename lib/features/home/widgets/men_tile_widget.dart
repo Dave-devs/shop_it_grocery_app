@@ -2,11 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
-import 'package:shop_it_grocery_app/common/utils/app_size.dart';
 import 'package:shop_it_grocery_app/common/widgets/reusable_text.dart';
 import 'package:shop_it_grocery_app/model/men_accessory_model.dart';
-
-import '../../../common/utils/app_spacer.dart';
 import '../bloc/home_bloc.dart';
 
 class MenTileWidget extends StatelessWidget {

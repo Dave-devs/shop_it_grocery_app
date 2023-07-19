@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
 import 'package:shop_it_grocery_app/common/widgets/reusable_text.dart';
 import 'package:shop_it_grocery_app/features/favorite/bloc/favorite_bloc.dart';
-import 'package:shop_it_grocery_app/features/home/bloc/home_bloc.dart';
 import 'package:shop_it_grocery_app/model/grocery_data_model.dart';
 
 

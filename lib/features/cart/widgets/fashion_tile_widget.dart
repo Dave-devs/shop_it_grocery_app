@@ -2,22 +2,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
-import 'package:shop_it_grocery_app/common/utils/app_size.dart';
 import 'package:shop_it_grocery_app/common/widgets/reusable_text.dart';
-import 'package:shop_it_grocery_app/model/furniture_data_model.dart';
-import 'package:shop_it_grocery_app/model/grocery_data_model.dart';
-import '../../../common/utils/spacer.dart';
-import '../bloc/home_bloc.dart';
+import 'package:shop_it_grocery_app/features/cart/bloc/cart_bloc.dart';
+import 'package:shop_it_grocery_app/features/home/bloc/home_bloc.dart';
+import '../../../model/fashion_data_model.dart';
 
-class GroceryTileWidget extends StatelessWidget {
 
-  final HomeBloc homeBloc;
-  final GroceryDataModel groceryDataModel;
-
-  const GroceryTileWidget({
+class FashionTileWidget extends StatelessWidget {
+  final CartBloc cartBloc;
+  final  FashionDataModel fashionDataModel;
+  
+  const FashionTileWidget({
     Key? key,
-    required this.homeBloc,
-    required this.groceryDataModel,
+    required this.cartBloc,
+    required this.fashionDataModel,
   }) : super(key: key);
 
   @override
@@ -38,25 +36,15 @@ class GroceryTileWidget extends StatelessWidget {
                           topLeft: Radius.circular(6.0),
                           topRight: Radius.circular(6.0)),
                       image: DecorationImage(
-                          image: NetworkImage(groceryDataModel.imageUrl),
+                          image: NetworkImage(fashionDataModel.imageUrl),
                           fit: BoxFit.cover))),
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                    onPressed: () =>
-                        homeBloc.add(OnHomeFavoriteIconNavClickEvent()),
-                    icon: Icon(
-                      Icons.favorite_outline,
-                      size: 20,
-                      color: AppColors.kPrimaryColor,
-                    )),
-              ),
+              
               Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
-                      onPressed: () => OnHomeCartIconNavClickEvent(),
+                      onPressed: () => cartBloc.add(CartRemoveItemEvent(fashionDataModel: fashionDataModel)),
                       icon: Icon(
-                        Icons.shopping_cart_outlined,
+                        Icons.delete_outlined,
                         size: 20,
                         color: AppColors.kPrimaryColor,
                       ))),
@@ -67,7 +55,7 @@ class GroceryTileWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 5),
             child: Text(
-              groceryDataModel.name,
+              fashionDataModel.name,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: appStyle(12, FontWeight.bold, AppColors.kBlackText, null),
@@ -79,7 +67,7 @@ class GroceryTileWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 5),
             child: Text(
-              groceryDataModel.description,
+              fashionDataModel.description,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               softWrap: true,
@@ -93,7 +81,7 @@ class GroceryTileWidget extends StatelessWidget {
               left: 5,
             ),
             child: Text(
-              "\$${groceryDataModel.price}",
+              "\$${fashionDataModel.price}",
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               softWrap: true,

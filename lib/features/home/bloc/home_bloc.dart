@@ -102,12 +102,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> onProductCartItemClick(
       OnProductCartItemClickEvent event, Emitter<HomeState> emit) {
-    cartGroceryItems.add(event.groceryClickedProduct!);
-    cartEletronicsItems.add(event.eletronicClickedProduct!);
-    cartFashionItems.add(event.fashionClickedProduct!);
-    cartFurnitureItems.add(event.furnitureClickedProduct!);
-    cartMenItems.add(event.menClickedProduct!);
-    cartWomenItems.add(event.womenClickedProduct!);
+    groceryItems.add(event.groceryClickedProduct!);
+    eletronicsItems.add(event.eletronicClickedProduct!);
+    fashionItems.add(event.fashionClickedProduct!);
+    furnitureItems.add(event.furnitureClickedProduct!);
+    menAccessoryItems.add(event.menClickedProduct!);
+    womenAccessoryItems.add(event.womenClickedProduct!);
     emit(ProductTileCartIconClickState());
     emit(ProductTileCartIconClickState(cartCount: event.count++));
   }

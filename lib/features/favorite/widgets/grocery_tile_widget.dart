@@ -2,21 +2,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
-import 'package:shop_it_grocery_app/common/utils/app_size.dart';
 import 'package:shop_it_grocery_app/common/widgets/reusable_text.dart';
-import 'package:shop_it_grocery_app/model/furniture_data_model.dart';
+import 'package:shop_it_grocery_app/features/favorite/bloc/favorite_bloc.dart';
+import 'package:shop_it_grocery_app/features/home/bloc/home_bloc.dart';
 import 'package:shop_it_grocery_app/model/grocery_data_model.dart';
-import '../../../common/utils/spacer.dart';
-import '../bloc/home_bloc.dart';
+
 
 class GroceryTileWidget extends StatelessWidget {
 
-  final HomeBloc homeBloc;
+  final FavoriteBloc favoriteBloc;
   final GroceryDataModel groceryDataModel;
 
   const GroceryTileWidget({
     Key? key,
-    required this.homeBloc,
+    required this.favoriteBloc,
     required this.groceryDataModel,
   }) : super(key: key);
 
@@ -40,23 +39,13 @@ class GroceryTileWidget extends StatelessWidget {
                       image: DecorationImage(
                           image: NetworkImage(groceryDataModel.imageUrl),
                           fit: BoxFit.cover))),
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                    onPressed: () =>
-                        homeBloc.add(OnHomeFavoriteIconNavClickEvent()),
-                    icon: Icon(
-                      Icons.favorite_outline,
-                      size: 20,
-                      color: AppColors.kPrimaryColor,
-                    )),
-              ),
+              
               Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
-                      onPressed: () => OnHomeCartIconNavClickEvent(),
+                      onPressed: () => favoriteBloc.add(FavoriteRemoveItemEvent(groceryDataModel: groceryDataModel)),
                       icon: Icon(
-                        Icons.shopping_cart_outlined,
+                        Icons.delete_outlined,
                         size: 20,
                         color: AppColors.kPrimaryColor,
                       ))),

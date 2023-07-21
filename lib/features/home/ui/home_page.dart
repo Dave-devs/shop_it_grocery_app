@@ -53,6 +53,10 @@ class _HomePageState extends State<HomePage> {
         } else if (state is OnHomeCartNavigateClickState) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const CartPage()));
+        } else if (state is CartTileItemAddedState) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Item added to cart')));
+        } else if (state is FavoriteTileItemAddedState) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Item added to favorite')));
         }
       },
       builder: (context, state) {
@@ -134,7 +138,8 @@ class _HomePageState extends State<HomePage> {
 
           case HomeSuccessState:
             final successState = state as HomeSuccessState;
-            return Scaffold( ////////Where am looking for.....................................................................
+            return Scaffold(
+              ////////Where am looking for.....................................................................
               //Success State Widget
               backgroundColor: Colors.white,
               appBar: AppBar(
@@ -190,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                               )),
                         ),
                         Badge(
-                          label: const Text("0"),
+                          label:const Text("0"),
                           child: IconButton(
                               alignment: Alignment.topRight,
                               onPressed: () {
@@ -256,7 +261,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const HeightSpacer(height: 5),
-
                   GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -270,33 +274,15 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppSize.kWidth,
-                                decoration: BoxDecoration(
-                                    color: AppColors.kPrimaryAccentColor),
-                                child: Center(
-                                    child: ReusableText(
-                                  text: 'Eletronics Section',
-                                  style: appStyle(24, FontWeight.bold,
-                                      AppColors.kBlackText, null),
-                                )),
-                              ),
-                              const HeightSpacer(height: 20),
-                              EletronicTileWidget(
-                                  homeBloc: homeBloc,
-                                  eletronicDataModel:
-                                      successState.eletronicData[index]),
-                            ],
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          child: EletronicTileWidget(
+                                    homeBloc: homeBloc,
+                                    eletronicDataModel:
+                                        successState.eletronicData[index]),
                         );
                       }),
-
-                    const HeightSpacer(height: 20),
-
-                    GridView.builder(
+                  const HeightSpacer(height: 20),
+                  GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               //Second Grid View for Fashion
@@ -308,33 +294,15 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppSize.kWidth,
-                                decoration: BoxDecoration(
-                                    color: AppColors.kPrimaryAccentColor),
-                                child: Center(
-                                    child: ReusableText(
-                                  text: 'Fashion Section',
-                                  style: appStyle(24, FontWeight.bold,
-                                      AppColors.kBlackText, null),
-                                )),
-                              ),
-                              const HeightSpacer(height: 20),
-                              FashionTileWidget(
-                                  homeBloc: homeBloc,
-                                  fashionDataModel:
-                                      successState.fashionData[index]),
-                            ],
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          child: FashionTileWidget(
+                              homeBloc: homeBloc,
+                              fashionDataModel:
+                                  successState.fashionData[index]),
                         );
                       }),
-
-                    const HeightSpacer(height: 20),
-
-                    GridView.builder(
+                  const HeightSpacer(height: 20),
+                  GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               //Third Grid View for Furniture
@@ -346,33 +314,15 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppSize.kWidth,
-                                decoration: BoxDecoration(
-                                    color: AppColors.kPrimaryAccentColor),
-                                child: Center(
-                                    child: ReusableText(
-                                  text: 'Furniture Section',
-                                  style: appStyle(24, FontWeight.bold,
-                                      AppColors.kBlackText, null),
-                                )),
-                              ),
-                              const HeightSpacer(height: 20),
-                              FurnitureTileWidget(
-                                  homeBloc: homeBloc,
-                                  furnitureDataModel:
-                                      successState.furnitureData[index]),
-                            ],
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          child: FurnitureTileWidget(
+                              homeBloc: homeBloc,
+                              furnitureDataModel:
+                                  successState.furnitureData[index]),
                         );
                       }),
-
-                    const HeightSpacer(height: 20),
-
-                    GridView.builder(
+                  const HeightSpacer(height: 20),
+                  GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               //Forth Grid View for Grocery
@@ -384,27 +334,11 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppSize.kWidth,
-                                decoration: BoxDecoration(
-                                    color: AppColors.kPrimaryAccentColor),
-                                child: Center(
-                                    child: ReusableText(
-                                  text: 'Grocery Section',
-                                  style: appStyle(24, FontWeight.bold,
-                                      AppColors.kBlackText, null),
-                                )),
-                              ),
-                              const HeightSpacer(height: 20),
-                              GroceryTileWidget(
-                                homeBloc: homeBloc,
-                                groceryDataModel: successState.groceryData[index]
-                              ),
-                            ],
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          child: GroceryTileWidget(
+                              homeBloc: homeBloc,
+                              groceryDataModel:
+                                  successState.groceryData[index]),
                         );
                       }),
                   const HeightSpacer(height: 20),
@@ -420,27 +354,11 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(1.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppSize.kWidth,
-                                decoration: BoxDecoration(
-                                    color: AppColors.kPrimaryAccentColor),
-                                child: Center(
-                                    child: ReusableText(
-                                  text: 'Men Accessory Section',
-                                  style: appStyle(24, FontWeight.bold,
-                                      AppColors.kBlackText, null),
-                                )),
-                              ),
-                              const HeightSpacer(height: 20),
-                              MenTileWidget(
-                                  homeBloc: homeBloc,
-                                  menAccessoryDataModel:
-                                      successState.menDataAccessory[index]),
-                            ],
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          child:  MenTileWidget(
+                              homeBloc: homeBloc,
+                              menAccessoryDataModel:
+                                  successState.menDataAccessory[index]),
                         );
                       }),
                   const HeightSpacer(height: 20),
@@ -456,27 +374,11 @@ class _HomePageState extends State<HomePage> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppSize.kWidth,
-                                decoration: BoxDecoration(
-                                    color: AppColors.kPrimaryAccentColor),
-                                child: Center(
-                                    child: ReusableText(
-                                  text: 'Women Accessory Section',
-                                  style: appStyle(24, FontWeight.bold,
-                                      AppColors.kBlackText, null),
-                                )),
-                              ),
-                              const HeightSpacer(height: 20),
-                              WomenTileWidget(
-                                  homeBloc: homeBloc,
-                                  womenAccessoryDataModel:
-                                      successState.womenDataAccessory[index]),
-                            ],
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          child: WomenTileWidget(
+                              homeBloc: homeBloc,
+                              womenAccessoryDataModel:
+                                  successState.womenDataAccessory[index]),
                         );
                       }),
                 ],

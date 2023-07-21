@@ -40,7 +40,7 @@ class FashionTileWidget extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: IconButton(
                     onPressed: () =>
-                        homeBloc.add(OnHomeFavoriteIconNavClickEvent()),
+                        homeBloc.add(OnProductFavoriteItemClickEvent(fashionClickedProduct: fashionDataModel)),
                     icon: Icon(
                       Icons.favorite_outline,
                       size: 20,
@@ -50,7 +50,7 @@ class FashionTileWidget extends StatelessWidget {
               Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
-                      onPressed: () => OnHomeCartIconNavClickEvent(),
+                      onPressed: () => homeBloc.add(OnProductCartItemClickEvent(fashionClickedProduct: fashionDataModel)),
                       icon: Icon(
                         Icons.shopping_cart_outlined,
                         size: 20,

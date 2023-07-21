@@ -9,8 +9,6 @@ import 'package:shop_it_grocery_app/features/cart/widgets/furniture_tile_widget.
 import 'package:shop_it_grocery_app/features/cart/widgets/grocery_tile_widget.dart';
 import 'package:shop_it_grocery_app/features/cart/widgets/men_tile_widget.dart';
 import 'package:shop_it_grocery_app/features/cart/widgets/women_tile_widget.dart';
-
-
 import '../../../common/utils/app_spacer.dart';
 import '../../../common/widgets/reusable_text.dart';
 
@@ -38,15 +36,13 @@ class _CartPageState extends State<CartPage> {
         backgroundColor: AppColors.kPrimaryColor,
         title: ReusableText(
           text: 'Cart Items List',
-          style: appStyle(20, FontWeight.bold, AppColors.kBlackText, null),
+          style: appStyle(20, FontWeight.bold, AppColors.kWhiteText, null),
         ),
         centerTitle: true,
       ),
       body: BlocConsumer<CartBloc, CartState>(
         bloc: cartBloc,
-        listener: (context, state) {
-         
-        },
+        listener: (context, state) { },
         listenWhen: (previous, current) => current is CartActionState,
         buildWhen: (previous, current) => current is! CartActionState,
         builder: (context, state) {
@@ -69,25 +65,10 @@ class _CartPageState extends State<CartPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Eletronics Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            EletronicTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: EletronicTileWidget(
                               cartBloc: cartBloc,
-                              eletronicDataModel: successState.eletronicItem![index]),
-                          ],
+                              eletronicDataModel: successState.eletronicItem![index]
                         ),
                       );
                     }
@@ -108,26 +89,10 @@ class _CartPageState extends State<CartPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Fashion Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            FashionTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: FashionTileWidget(
                               cartBloc: cartBloc,
                               fashionDataModel: successState.fashionItem![index]),
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -147,26 +112,10 @@ class _CartPageState extends State<CartPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Furniture Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            FurnitureTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: FurnitureTileWidget(
                               cartBloc: cartBloc,
                               furnitureDataModel: successState.furnitureItem![index]),
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -186,27 +135,11 @@ class _CartPageState extends State<CartPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Grocery Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            GroceryTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child:GroceryTileWidget(
                               cartBloc: cartBloc,
                               groceryDataModel: successState.groceryItem![index],
                             )
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -226,27 +159,11 @@ class _CartPageState extends State<CartPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Men Accessory Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            MenTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: MenTileWidget(
                               cartBloc: cartBloc,
                               menAccessoryDataModel: successState.menAccessoryItem![index],
                             )
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -266,27 +183,11 @@ class _CartPageState extends State<CartPage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Women Accessory Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            WomenTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: WomenTileWidget(
                               cartBloc: cartBloc,
                               womenAccessoryDataModel: successState.womenAccessoryItem![index],
                             )
-                          ],
-                        ),
                       );
                     }
                   ),

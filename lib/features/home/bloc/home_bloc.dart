@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
@@ -28,6 +27,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<OnHomeCartIconNavClickEvent>(onHomeCartIconNavClick);
     on<OnProductCartItemClickEvent>(onProductCartItemClick);
     on<OnProductFavoriteItemClickEvent>(onProductFavoriteItemClick);
+   
   }
 
   FutureOr<void> homeInitialEvent(
@@ -108,8 +108,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     furnitureItems.add(event.furnitureClickedProduct!);
     menAccessoryItems.add(event.menClickedProduct!);
     womenAccessoryItems.add(event.womenClickedProduct!);
-    emit(ProductTileCartIconClickState());
-    emit(ProductTileCartIconClickState(cartCount: event.count++));
+    emit(CartTileItemAddedState()); //For SnackBar
+
+    emit(TopCartCountState(cartCount: event.cartCount! + 1)); //For count increament
   }
 
   FutureOr<void> onProductFavoriteItemClick(
@@ -120,7 +121,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     favoriteFurnitureItems.add(event.furnitureClickedProduct!);
     favoriteMenItems.add(event.menClickedProduct!);
     favoriteWomenItems.add(event.womenClickedProduct!);
-    emit(ProductTileFavoriteIconClickState());
-    emit(ProductTileFavoriteIconClickState(favoriteCount: event.count++));
+    emit(FavoriteTileItemAddedState()); //For SnackBar
+
+    emit(TopFavoriteCountState(favoriteCount: event.favoriteCount! + 1)); //For count increament
   }
 }

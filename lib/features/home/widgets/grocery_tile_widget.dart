@@ -41,7 +41,7 @@ class GroceryTileWidget extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: IconButton(
                     onPressed: () =>
-                        homeBloc.add(OnHomeFavoriteIconNavClickEvent()),
+                        homeBloc.add(OnProductFavoriteItemClickEvent(groceryClickedProduct: groceryDataModel)),
                     icon: Icon(
                       Icons.favorite_outline,
                       size: 20,
@@ -51,7 +51,7 @@ class GroceryTileWidget extends StatelessWidget {
               Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
-                      onPressed: () => OnHomeCartIconNavClickEvent(),
+                      onPressed: () =>  homeBloc.add(OnProductCartItemClickEvent(groceryClickedProduct: groceryDataModel)),
                       icon: Icon(
                         Icons.shopping_cart_outlined,
                         size: 20,

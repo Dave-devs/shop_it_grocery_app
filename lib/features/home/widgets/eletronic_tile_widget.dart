@@ -44,15 +44,17 @@ class EletronicTileWidget extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: IconButton(
-                  onPressed: () => homeBloc.add(OnHomeFavoriteIconNavClickEvent()),
-                  icon: Icon(Icons.favorite_outline, size: 20, color: AppColors.kPrimaryColor,)
+                  onPressed: () => homeBloc.add(OnProductFavoriteItemClickEvent(
+                    eletronicClickedProduct: eletronicDataModel
+                  )),
+                  icon: Icon(Icons.favorite_outline, size: 20, color: AppColors.kPrimaryColor,) 
                 ),
               ),
               
               Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
-                  onPressed: () => OnHomeCartIconNavClickEvent(),
+                  onPressed: () => homeBloc.add(OnProductCartItemClickEvent(eletronicClickedProduct: eletronicDataModel)),
                   icon: Icon(
                     Icons.shopping_cart_outlined,
                     size: 20,

@@ -65,26 +65,10 @@ class _FavoritePageState extends State<FavoritePage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Eletronics Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            EletronicTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: EletronicTileWidget(
                               favoriteBloc: favoriteBloc,
                               eletronicDataModel: successState.eletronicItem![index]),
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -104,26 +88,10 @@ class _FavoritePageState extends State<FavoritePage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Fashion Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            FashionTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: FashionTileWidget(
                               favoriteBloc: favoriteBloc,
                               fashionDataModel: successState.fashionItem![index]),
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -143,26 +111,10 @@ class _FavoritePageState extends State<FavoritePage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Furniture Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            FurnitureTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: FurnitureTileWidget(
                               favoriteBloc: favoriteBloc,
                               furnitureDataModel: successState.furnitureItem![index]),
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -182,27 +134,11 @@ class _FavoritePageState extends State<FavoritePage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Grocery Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            GroceryTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: GroceryTileWidget(
                               favoriteBloc: favoriteBloc,
                               groceryDataModel: successState.groceryItem![index],
                             )
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -222,27 +158,11 @@ class _FavoritePageState extends State<FavoritePage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Men Accessory Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            MenTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: MenTileWidget(
                               favoriteBloc: favoriteBloc,
                               menAccessoryDataModel: successState.menAccessoryItem![index],
                             )
-                          ],
-                        ),
                       );
                     }
                   ),
@@ -262,27 +182,11 @@ class _FavoritePageState extends State<FavoritePage> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: AppSize.kWidth,
-                              decoration: BoxDecoration(
-                                color: AppColors.kPrimaryAccentColor),
-                              child: Center(
-                                child: ReusableText(
-                                  text: 'Women Accessory Section',
-                                  style: appStyle(24, FontWeight.bold, AppColors.kBlackText, null),
-                                )
-                              ),
-                            ),
-                            const HeightSpacer(height: 20),
-                            WomenTileWidget(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        child: WomenTileWidget(
                               favoriteBloc: favoriteBloc,
                               womenAccessoryDataModel: successState.womenAccessoryItem![index],
                             )
-                          ],
-                        ),
                       );
                     }
                   ),

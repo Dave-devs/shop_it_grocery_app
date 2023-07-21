@@ -19,7 +19,7 @@ class OnProductCartItemClickEvent extends HomeEvent {
   final FurnitureDataModel? furnitureClickedProduct;
   final MenAccessoryDataModel? menClickedProduct;
   final WomenAccessoryDataModel? womenClickedProduct;
-  int count;
+  final int? cartCount;
 
   OnProductCartItemClickEvent({
     this.groceryClickedProduct,
@@ -28,7 +28,7 @@ class OnProductCartItemClickEvent extends HomeEvent {
     this.furnitureClickedProduct,
     this.menClickedProduct,
     this.womenClickedProduct,
-    this.count = 0,
+    this.cartCount
   });
 } //Event 4
 
@@ -39,7 +39,7 @@ class OnProductFavoriteItemClickEvent extends HomeEvent {
   final FurnitureDataModel? furnitureClickedProduct;
   final MenAccessoryDataModel? menClickedProduct;
   final WomenAccessoryDataModel? womenClickedProduct;
-  int count;
+  final int? favoriteCount;
 
   OnProductFavoriteItemClickEvent({
     this.groceryClickedProduct,
@@ -48,6 +48,6 @@ class OnProductFavoriteItemClickEvent extends HomeEvent {
     this.furnitureClickedProduct,
     this.menClickedProduct,
     this.womenClickedProduct,
-    this.count = 0,
+    this.favoriteCount,
   });
 }

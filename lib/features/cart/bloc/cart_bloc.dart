@@ -18,12 +18,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
 
   FutureOr<void> cartInitialEvent(CartInitialEvent event, Emitter<CartState> emit) {
-    emit(CartSuccessState(groceryItem:  groceryItems));
-    emit(CartSuccessState(eletronicItem: eletronicsItems));
-    emit(CartSuccessState(furnitureItem: furnitureItems));
-    emit(CartSuccessState(fashionItem: fashionItems));
-    emit(CartSuccessState(menAccessoryItem:  menAccessoryItems));
-    emit(CartSuccessState(womenAccessoryItem: womenAccessoryItems));
+    emit(CartSuccessState(
+      groceryItem:  groceryItems,
+      eletronicItem: eletronicsItems,
+      furnitureItem: furnitureItems,
+      fashionItem: fashionItems,
+      menAccessoryItem: menAccessoryItems,
+      womenAccessoryItem: womenAccessoryItems
+    ));
   }
 
   FutureOr<void> cartRemoveItemEvent(CartRemoveItemEvent event, Emitter<CartState> emit) {
@@ -34,12 +36,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     menAccessoryItems.remove(event.menAccessoryDataModel);
     womenAccessoryItems.remove(event.womenAccessoryDataModel);
 
-    emit(CartSuccessState(groceryItem: groceryItems));
-    emit(CartSuccessState(eletronicItem: eletronicsItems));
-    emit(CartSuccessState(furnitureItem: furnitureItems));
-    emit(CartSuccessState(fashionItem: fashionItems));
-    emit(CartSuccessState(menAccessoryItem: menAccessoryItems));
-    emit(CartSuccessState(womenAccessoryItem: womenAccessoryItems));
+    emit(CartSuccessState(
+      groceryItem: groceryItems,
+      eletronicItem: eletronicsItems,
+      fashionItem: fashionItems,
+      furnitureItem: furnitureItems,
+      menAccessoryItem: menAccessoryItems,
+      womenAccessoryItem: womenAccessoryItems
+    ));
     
   }
 }

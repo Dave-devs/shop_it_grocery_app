@@ -9,7 +9,6 @@ import 'package:shop_it_grocery_app/features/favorite/widgets/grocery_tile_widge
 import 'package:shop_it_grocery_app/features/favorite/widgets/men_tile_widget.dart';
 import 'package:shop_it_grocery_app/features/favorite/widgets/women_tile_widget.dart';
 import '../../../common/app_colors/app_colors.dart';
-import '../../../common/utils/app_size.dart';
 import '../../../common/utils/app_spacer.dart';
 
 class FavoritePage extends StatefulWidget {
@@ -36,7 +35,7 @@ class _FavoritePageState extends State<FavoritePage> {
         backgroundColor: AppColors.kPrimaryColor,
         title: ReusableText(
           text: 'Favorite Items List',
-          style: appStyle(20, FontWeight.bold, AppColors.kBlackText, null),
+          style: appStyle(20, FontWeight.bold, AppColors.kWhiteText, null),
         ),
         centerTitle: true,
       ),
@@ -60,7 +59,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -68,7 +67,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: EletronicTileWidget(
                               favoriteBloc: favoriteBloc,
-                              eletronicDataModel: successState.eletronicItem![index]),
+                              eletronicDataModel: successState.eletronicItem[index]),
                       );
                     }
                   ),
@@ -83,7 +82,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -91,7 +90,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: FashionTileWidget(
                               favoriteBloc: favoriteBloc,
-                              fashionDataModel: successState.fashionItem![index]),
+                              fashionDataModel: successState.fashionItem[index]),
                       );
                     }
                   ),
@@ -106,7 +105,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -114,7 +113,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: FurnitureTileWidget(
                               favoriteBloc: favoriteBloc,
-                              furnitureDataModel: successState.furnitureItem![index]),
+                              furnitureDataModel: successState.furnitureItem[index]),
                       );
                     }
                   ),
@@ -129,7 +128,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -137,7 +136,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: GroceryTileWidget(
                               favoriteBloc: favoriteBloc,
-                              groceryDataModel: successState.groceryItem![index],
+                              groceryDataModel: successState.groceryItem[index],
                             )
                       );
                     }
@@ -153,7 +152,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -161,7 +160,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: MenTileWidget(
                               favoriteBloc: favoriteBloc,
-                              menAccessoryDataModel: successState.menAccessoryItem![index],
+                              menAccessoryDataModel: successState.menAccessoryItem[index],
                             )
                       );
                     }
@@ -177,7 +176,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -185,7 +184,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: WomenTileWidget(
                               favoriteBloc: favoriteBloc,
-                              womenAccessoryDataModel: successState.womenAccessoryItem![index],
+                              womenAccessoryDataModel: successState.womenAccessoryItem[index],
                             )
                       );
                     }

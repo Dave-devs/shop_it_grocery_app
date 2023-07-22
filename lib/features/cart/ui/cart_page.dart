@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_it_grocery_app/common/app_colors/app_colors.dart';
-import 'package:shop_it_grocery_app/common/utils/app_size.dart';
 import 'package:shop_it_grocery_app/features/cart/bloc/cart_bloc.dart';
 import 'package:shop_it_grocery_app/features/cart/widgets/eletronic_tile_widget.dart';
 import 'package:shop_it_grocery_app/features/cart/widgets/fashion_tile_widget.dart';
@@ -60,7 +59,7 @@ class _CartPageState extends State<CartPage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -68,7 +67,7 @@ class _CartPageState extends State<CartPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: EletronicTileWidget(
                               cartBloc: cartBloc,
-                              eletronicDataModel: successState.eletronicItem![index]
+                              eletronicDataModel: successState.eletronicItem[index]
                         ),
                       );
                     }
@@ -84,7 +83,7 @@ class _CartPageState extends State<CartPage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -92,7 +91,7 @@ class _CartPageState extends State<CartPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: FashionTileWidget(
                               cartBloc: cartBloc,
-                              fashionDataModel: successState.fashionItem![index]),
+                              fashionDataModel: successState.fashionItem[index]),
                       );
                     }
                   ),
@@ -107,7 +106,7 @@ class _CartPageState extends State<CartPage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -115,7 +114,7 @@ class _CartPageState extends State<CartPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: FurnitureTileWidget(
                               cartBloc: cartBloc,
-                              furnitureDataModel: successState.furnitureItem![index]),
+                              furnitureDataModel: successState.furnitureItem[index]),
                       );
                     }
                   ),
@@ -130,7 +129,7 @@ class _CartPageState extends State<CartPage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -138,7 +137,7 @@ class _CartPageState extends State<CartPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child:GroceryTileWidget(
                               cartBloc: cartBloc,
-                              groceryDataModel: successState.groceryItem![index],
+                              groceryDataModel: successState.groceryItem[index],
                             )
                       );
                     }
@@ -154,7 +153,7 @@ class _CartPageState extends State<CartPage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -162,7 +161,7 @@ class _CartPageState extends State<CartPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: MenTileWidget(
                               cartBloc: cartBloc,
-                              menAccessoryDataModel: successState.menAccessoryItem![index],
+                              menAccessoryDataModel: successState.menAccessoryItem[index],
                             )
                       );
                     }
@@ -178,7 +177,7 @@ class _CartPageState extends State<CartPage> {
                       childAspectRatio: 1,
                       mainAxisSpacing: 10,
                     ),
-                    itemCount: successState.eletronicItem?.length,
+                    itemCount: successState.eletronicItem.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -186,7 +185,7 @@ class _CartPageState extends State<CartPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: WomenTileWidget(
                               cartBloc: cartBloc,
-                              womenAccessoryDataModel: successState.womenAccessoryItem![index],
+                              womenAccessoryDataModel: successState.womenAccessoryItem[index],
                             )
                       );
                     }

@@ -19,12 +19,14 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
 
   FutureOr<void> favoriteInitialEvent(
       FavoriteInitialEvent event, Emitter<FavoriteState> emit) {
-    emit(FavoriteSuccessState(groceryItem: groceryItems));
-    emit(FavoriteSuccessState(eletronicItem: eletronicsItems));
-    emit(FavoriteSuccessState(furnitureItem: furnitureItems));
-    emit(FavoriteSuccessState(fashionItem: fashionItems));
-    emit(FavoriteSuccessState(menAccessoryItem: menAccessoryItems));
-    emit(FavoriteSuccessState(womenAccessoryItem: womenAccessoryItems));
+    emit(FavoriteSuccessState(
+      groceryItem: groceryItems,
+      eletronicItem: eletronicsItems,
+      furnitureItem: furnitureItems,
+      fashionItem: fashionItems,
+      menAccessoryItem: menAccessoryItems,
+      womenAccessoryItem: womenAccessoryItems
+    ));
   }
 
   FutureOr<void> favoriteRemoveItemEvent(
@@ -36,11 +38,14 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     menAccessoryItems.remove(event.menAccessoryDataModel);
     womenAccessoryItems.remove(event.womenAccessoryDataModel);
 
-    emit(FavoriteSuccessState(groceryItem: groceryItems));
-    emit(FavoriteSuccessState(eletronicItem: eletronicsItems));
-    emit(FavoriteSuccessState(furnitureItem: furnitureItems));
-    emit(FavoriteSuccessState(fashionItem: fashionItems));
-    emit(FavoriteSuccessState(menAccessoryItem: menAccessoryItems));
-    emit(FavoriteSuccessState(womenAccessoryItem: womenAccessoryItems));
+    emit(FavoriteSuccessState(
+      groceryItem: groceryItems,
+      eletronicItem: eletronicsItems,
+      furnitureItem: furnitureItems,
+      fashionItem: fashionItems,
+      menAccessoryItem: menAccessoryItems,
+      womenAccessoryItem: womenAccessoryItems
+    ));
+
   }
 }

@@ -9,18 +9,18 @@ class FavoriteInitial extends FavoriteState {}
 class FavoriteActionState extends FavoriteState {}
 
 class FavoriteSuccessState extends FavoriteState {
-  final List<GroceryDataModel>? groceryItem;
-  final List<EletronicDataModel>? eletronicItem;
-  final List<FashionDataModel>? fashionItem;
-  final List<FurnitureDataModel>? furnitureItem;
-  final List<MenAccessoryDataModel>? menAccessoryItem;
-  final List<WomenAccessoryDataModel>? womenAccessoryItem;
+  final List<GroceryDataModel> groceryItem;
+  final List<EletronicDataModel> eletronicItem;
+  final List<FashionDataModel> fashionItem;
+  final List<FurnitureDataModel> furnitureItem;
+  final List<MenAccessoryDataModel> menAccessoryItem;
+  final List<WomenAccessoryDataModel> womenAccessoryItem;
   FavoriteSuccessState({
-    this.groceryItem,
-    this.eletronicItem,
-    this.fashionItem,
-    this.furnitureItem,
-    this.menAccessoryItem,
-    this.womenAccessoryItem,
+    required this.groceryItem,
+    required this.eletronicItem,
+    required this.fashionItem,
+    required this.furnitureItem,
+    required this.menAccessoryItem,
+    required this.womenAccessoryItem,
   });
 }

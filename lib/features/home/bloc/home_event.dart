@@ -20,7 +20,6 @@ class OnProductCartItemClickEvent extends HomeEvent {
   final MenAccessoryDataModel? menClickedProduct;
   final WomenAccessoryDataModel? womenClickedProduct;
   final int? cartCount;
-
   OnProductCartItemClickEvent({
     this.groceryClickedProduct,
     this.eletronicClickedProduct,
@@ -28,8 +27,10 @@ class OnProductCartItemClickEvent extends HomeEvent {
     this.furnitureClickedProduct,
     this.menClickedProduct,
     this.womenClickedProduct,
-    this.cartCount
+    this.cartCount,
   });
+
+  
 } //Event 4
 
 class OnProductFavoriteItemClickEvent extends HomeEvent {

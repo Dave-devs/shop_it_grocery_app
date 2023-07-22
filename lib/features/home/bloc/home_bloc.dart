@@ -110,6 +110,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     womenAccessoryItems.add(event.womenClickedProduct!);
     emit(CartTileItemAddedState()); //For SnackBar
 
+    if (kDebugMode) {
+      print('item carted');
+    }
     emit(TopCartCountState(cartCount: event.cartCount! + 1)); //For count increament
   }
 
@@ -123,6 +126,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     favoriteWomenItems.add(event.womenClickedProduct!);
     emit(FavoriteTileItemAddedState()); //For SnackBar
 
+     if (kDebugMode) {
+      print('item  wishlisted');
+    }
     emit(TopFavoriteCountState(favoriteCount: event.favoriteCount! + 1)); //For count increament
   }
 }

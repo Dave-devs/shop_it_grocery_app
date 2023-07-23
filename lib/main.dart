@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_it_grocery_app/features/bottom_nav_bar/bloc/bottom_nav_bloc.dart';
-import 'package:shop_it_grocery_app/features/bottom_nav_bar/ui/bottom_nav_bar.dart';
 import 'package:shop_it_grocery_app/features/onboarding/bloc/onboarding_bloc.dart';
+import 'package:shop_it_grocery_app/features/onboarding/ui/onboarding_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const BottomNavBarPage(),
+          home: const  OnboardingPage(),
         ),
       ),
     );

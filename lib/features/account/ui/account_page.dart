@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:shop_it_grocery_app/common/utils/app_spacer.dart';
-import 'package:shop_it_grocery_app/features/account/ui/settings_tile.dart';
 import '../../../common/app_colors/app_colors.dart';
 import '../../../common/widgets/reusable_text.dart';
 import '../widgets/acct_item_tile.dart';
+import '../widgets/settings_tile.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -82,11 +82,12 @@ class _AccountPageState extends State<AccountPage> {
       body: ListView(
         children: [
           Padding(
-              padding: const EdgeInsets.only(left: 10, top: 10, bottom: 5),
+            padding: const EdgeInsets.only(left: 10, top: 10, bottom: 5),
               child: ReusableText(
                 text: 'MY SHOP-IT ACCOUNT',
                 style: appStyle(15, FontWeight.w500, AppColors.kGrey, null),
-              )),
+              )
+          ),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Container(
@@ -221,8 +222,7 @@ class _AccountPageState extends State<AccountPage> {
                   children: [
                     ReusableText(
                       text: 'LOGOUT',
-                      style: appStyle(
-                          18, FontWeight.w600, AppColors.kPrimaryColor, null),
+                      style: appStyle(18, FontWeight.w600, AppColors.kPrimaryColor, null),
                     ),
                     const WidthSpacer(width: 5),
                     Icon(
@@ -232,8 +232,9 @@ class _AccountPageState extends State<AccountPage> {
                     )
                   ],
                 ),
-              )),
-        ],
+              )
+            ),
+          ],
       ),
     );
   }

@@ -30,52 +30,50 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<BottomNavBloc, BottomNavState>(
       builder: (context, state) {
-        return Container(
-          child: Scaffold(
-            backgroundColor: AppColors.kBackgroundColor,
-            body: pageLists[state.pageIndex],
-            bottomNavigationBar: Theme(
-              data: ThemeData(canvasColor: AppColors.kBlackText),
-              child: BottomNavigationBar(
-                  onTap: (index) {
-                    setState(() {
-                      state.pageIndex = index;
-                      context.read<BottomNavBloc>().add(BottomNavigatorEvent(index));
-                    });
-                  },
-                  currentIndex: state.pageIndex,
-                  elevation: 0,
-                  type: BottomNavigationBarType.fixed,
-                  selectedItemColor: AppColors.kPrimaryColor,
-                  unselectedItemColor: AppColors.kItemContainerColor,
-                  showSelectedLabels: false,
-                  showUnselectedLabels: false,
-                  items: const [
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.home_outlined),
-                        activeIcon: Icon(Icons.home),
-                        label: 'Home'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.shopping_cart_outlined),
-                        activeIcon: Icon(Icons.shopping_cart),
-                        label: 'Cart'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.favorite_outline),
-                        activeIcon: Icon(Icons.favorite),
-                        label: 'Favorite'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.person_outlined),
-                        activeIcon: Icon(Icons.person),
-                        label: 'Account'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.settings_outlined),
-                        activeIcon: Icon(Icons.settings),
-                        label: 'Settings'
-                    ),
-                  ]
-                ),
-            ),
-            ),
+        return Scaffold(
+          backgroundColor: AppColors.kBackgroundColor,
+          body: pageLists[state.pageIndex],
+          bottomNavigationBar: Theme(
+            data: ThemeData(canvasColor: AppColors.kBlackText),
+            child: BottomNavigationBar(
+                onTap: (index) {
+                  setState(() {
+                    state.pageIndex = index;
+                    context.read<BottomNavBloc>().add(BottomNavigatorEvent(index));
+                  });
+                },
+                currentIndex: state.pageIndex,
+                elevation: 0,
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: AppColors.kPrimaryColor,
+                unselectedItemColor: AppColors.kItemContainerColor,
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                items: const [
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.home_outlined),
+                      activeIcon: Icon(Icons.home),
+                      label: 'Home'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.shopping_cart_outlined),
+                      activeIcon: Icon(Icons.shopping_cart),
+                      label: 'Cart'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.favorite_outline),
+                      activeIcon: Icon(Icons.favorite),
+                      label: 'Favorite'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.person_outlined),
+                      activeIcon: Icon(Icons.person),
+                      label: 'Account'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.settings_outlined),
+                      activeIcon: Icon(Icons.settings),
+                      label: 'Settings'
+                  ),
+                ]
+              ),
+          ),
           );
         },
       );

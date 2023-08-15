@@ -1,6 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'number_login_bloc.dart';
 
-@immutable
-abstract class NumberLoginState {}
+class NumberLoginState {
+  final String phoneNumber;
 
-class NumberLoginInitial extends NumberLoginState {}
+  const NumberLoginState({this.phoneNumber = ''});
+
+  
+
+  NumberLoginState copyWith({
+  String? phoneNumber,
+  }) {
+    return NumberLoginState(
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+    );
+  }
+}

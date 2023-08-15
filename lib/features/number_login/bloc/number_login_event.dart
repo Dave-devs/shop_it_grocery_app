@@ -1,4 +1,11 @@
 part of 'number_login_bloc.dart';
 
-@immutable
-abstract class NumberLoginEvent {}
+abstract class NumberLoginEvent {
+  const NumberLoginEvent();
+}
+
+class OnNumberLoginEventClick extends NumberLoginEvent {
+  final String number;
+  
+  const OnNumberLoginEventClick(this.number);
+}

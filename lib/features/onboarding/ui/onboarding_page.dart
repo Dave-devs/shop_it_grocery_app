@@ -65,17 +65,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   controller: pageController,
                   children: const [
                     PageWidget(
-                        imagePath: 'assets/onboarding/shop.png',
-                        text: 'Number Leading Online Store',
-                        subText: 'SHOP IT is the number one leading online market store in Nigeria with 25 years of offering quality services.'),
+                      imagePath: 'assets/onboarding/shop.png',
+                      text: 'Number Leading Online Store',
+                      subText: 'SHOP IT is the number one leading online market store in Nigeria with 25 years of offering quality services.'),
                     PageWidget(
-                        imagePath: 'assets/onboarding/delivery.png',
-                        text: 'Free Delivery To Your Door Step',
-                        subText: 'Explore a world of fashion, electronics, home essentials, and more, right at your fingertips and have it deliver to your door step..'),
+                      imagePath: 'assets/onboarding/delivery.png',
+                      text: 'Free Delivery To Your Door Step',
+                      subText: 'Explore a world of fashion, electronics, home essentials, and more, right at your fingertips and have it deliver to your door step..'),
                     PageWidget(
-                        imagePath: 'assets/onboarding/payment.png',
-                        text: 'Enjoy Hassle Free Payment',
-                        subText: 'Say goodbye to slow payment processes. Enjoy smooth payment process with our new payment partner that offers swipe payment without extra charges.'),
+                      imagePath: 'assets/onboarding/payment.png',
+                      text: 'Enjoy Hassle Free Payment',
+                      subText: 'Say goodbye to slow payment processes. Enjoy smooth payment process with our new payment partner that offers swipe payment without extra  charges.'
+                    ),
                   ],
                 ),
                 Align(
